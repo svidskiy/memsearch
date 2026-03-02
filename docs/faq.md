@@ -226,4 +226,4 @@ memsearch index ./memory/ --provider <new-provider>
 
 ### Claude Code plugin issues
 
-For plugin-specific troubleshooting (API key errors, watcher issues, skill not triggering, `realpath -m` on macOS), see [Claude Code Plugin -- Troubleshooting](claude-plugin/troubleshooting.md).
+For plugin-specific troubleshooting (API key errors, watcher issues, skill not triggering, `realpath -m` on macOS), see [Claude Code Plugin — Troubleshooting](claude-plugin/troubleshooting.md).

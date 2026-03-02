@@ -1,6 +1,6 @@
 # Troubleshooting
 
-The plugin provides several observability mechanisms, from always-on status lines to opt-in debug logging. Work from the top down -- most issues are resolved by the first two sections.
+The plugin provides several observability mechanisms, from always-on status lines to opt-in debug logging. Work from the top down — most issues are resolved by the first two sections.
 
 | Mechanism | Always On? | What You See | Best For |
 |-----------|-----------|--------------|----------|
@@ -45,7 +45,7 @@ Here is what a session looks like with the plugin installed:
 **API key missing:**
 
 ```
-[memsearch v0.1.11] embedding: openai/text-embedding-3-small | milvus: ~/.memsearch/milvus.db | ERROR: OPENAI_API_KEY not set -- memory search disabled
+[memsearch v0.1.11] embedding: openai/text-embedding-3-small | milvus: ~/.memsearch/milvus.db | ERROR: OPENAI_API_KEY not set — memory search disabled
 ```
 
 **Update available:**
@@ -54,7 +54,7 @@ Here is what a session looks like with the plugin installed:
 [memsearch v0.1.11] embedding: openai/text-embedding-3-small | milvus: ~/.memsearch/milvus.db | UPDATE: v0.1.12 available
 ```
 
-### "ERROR: \<KEY\> not set -- memory search disabled"
+### "ERROR: \<KEY\> not set — memory search disabled"
 
 The plugin checks for the required API key at session start. If missing, memory recording still writes `.md` files, but semantic search and indexing are disabled.
 
@@ -89,12 +89,12 @@ uv tool upgrade memsearch
 # If installed via pip
 pip install --upgrade memsearch
 
-# If using uvx (auto-upgraded on each session -- you shouldn't see this)
+# If using uvx (auto-upgraded on each session — you shouldn't see this)
 uvx --upgrade memsearch --version
 ```
 
 !!! note
-    `uvx` users get automatic upgrades -- the plugin runs `uvx --upgrade` on every bootstrap. The `UPDATE` hint primarily helps `pip`/`uv tool` users who have no automatic update mechanism.
+    `uvx` users get automatic upgrades — the plugin runs `uvx --upgrade` on every bootstrap. The `UPDATE` hint primarily helps `pip`/`uv tool` users who have no automatic update mechanism.
 
 ---
 
@@ -123,13 +123,13 @@ grep -A 10 'SessionStart' ~/.claude/logs/*.log
 grep 'additionalContext' ~/.claude/logs/*.log
 ```
 
-Each hook outputs JSON to stdout. In debug mode, you can see the raw JSON -- useful for verifying that `additionalContext` (cold-start memories) and `systemMessage` (status line) are being returned correctly.
+Each hook outputs JSON to stdout. In debug mode, you can see the raw JSON — useful for verifying that `additionalContext` (cold-start memories) and `systemMessage` (status line) are being returned correctly.
 
 ---
 
 ## CLI Diagnostic Commands
 
-These commands work outside of Claude Code -- run them directly in your terminal.
+These commands work outside of Claude Code — run them directly in your terminal.
 
 **Verify resolved configuration:**
 
@@ -244,9 +244,9 @@ This manually triggers the skill, bypassing Claude's judgment about whether memo
 
 **Skill not triggering automatically?** Possible reasons:
 
-- Claude judged that the question doesn't need historical context -- this is by design
-- The `UserPromptSubmit` hint (`[memsearch] Memory available`) didn't fire -- check that the prompt is >= 10 characters
-- `memsearch` is not installed or not in PATH -- the `UserPromptSubmit` hook returns `{}` when `MEMSEARCH_CMD` is empty
+- Claude judged that the question doesn't need historical context — this is by design
+- The `UserPromptSubmit` hint (`[memsearch] Memory available`) didn't fire — check that the prompt is >= 10 characters
+- `memsearch` is not installed or not in PATH — the `UserPromptSubmit` hook returns `{}` when `MEMSEARCH_CMD` is empty
 
 ---
 
@@ -279,9 +279,9 @@ tail -20 .memsearch/memory/$(date +%Y-%m-%d).md
 
 If you see `## Session HH:MM` headings but no `### HH:MM` sub-headings with bullet points underneath, the Stop hook is not completing successfully. Common causes:
 
-- `claude` CLI not found -- the Stop hook calls `claude -p --model haiku` to summarize
-- API key missing -- the Stop hook skips summarization when the embedding provider key is not set
-- Transcript too short -- sessions with fewer than 3 JSONL lines are skipped
+- `claude` CLI not found — the Stop hook calls `claude -p --model haiku` to summarize
+- API key missing — the Stop hook skips summarization when the embedding provider key is not set
+- Transcript too short — sessions with fewer than 3 JSONL lines are skipped
 
 ---
 
@@ -310,4 +310,4 @@ Or manually update the `derive-collection.sh` script as described in [issue #95]
 | New memories not being indexed | Check watch process is running | [Watch process](#watch-process) |
 | Claude never invokes memory recall | Try `/memory-recall <query>` manually | [Skill execution](#skill-execution) |
 | Session summaries missing from memory files | Check `claude` CLI is available and API key is set | [Memory files](#memory-files) |
-| `realpath: illegal option -- m` on macOS | Update plugin to v0.2.1+ | [realpath issue](#realpath-error-on-macos) |
+| `realpath: illegal option — m` on macOS | Update plugin to v0.2.1+ | [realpath issue](#realpath-error-on-macos) |

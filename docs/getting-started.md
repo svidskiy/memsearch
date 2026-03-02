@@ -25,7 +25,7 @@ pip install "memsearch[all]"         # Everything above
 
 ## Zero-Config Quick Start (No API Key)
 
-Don't have an API key yet? Use a fully local embedding model -- no sign-up, no network calls:
+Don't have an API key yet? Use a fully local embedding model — no sign-up, no network calls:
 
 ```bash
 pip install "memsearch[local]"
@@ -85,7 +85,7 @@ sequenceDiagram
     M-->>U: Results with source info
 ```
 
-**Markdown is the source of truth.** The vector store is a derived index -- rebuildable anytime from the original `.md` files. This means your memory is human-readable, `git`-friendly, and never locked into a proprietary format.
+**Markdown is the source of truth.** The vector store is a derived index — rebuildable anytime from the original `.md` files. This means your memory is human-readable, `git`-friendly, and never locked into a proprietary format.
 
 ---
 
@@ -196,9 +196,9 @@ asyncio.run(main())
 
 The real power of memsearch is giving an LLM agent persistent memory across conversations. The pattern is simple: **recall, think, remember**.
 
-1. **Recall** -- search past memories for context relevant to the user's question
-2. **Think** -- call the LLM with that context injected into the system prompt
-3. **Remember** -- save the exchange to a daily markdown log and re-index
+1. **Recall** — search past memories for context relevant to the user's question
+2. **Think** — call the LLM with that context injected into the system prompt
+3. **Remember** — save the exchange to a daily markdown log and re-index
 
 === "OpenAI (default)"
 
@@ -321,7 +321,7 @@ The real power of memsearch is giving an LLM agent persistent memory across conv
 
 ## API Keys
 
-Set the environment variable for your chosen embedding provider. memsearch reads standard SDK environment variables -- no custom key names.
+Set the environment variable for your chosen embedding provider. memsearch reads standard SDK environment variables — no custom key names.
 
 | Provider | Env Var | Notes |
 |----------|---------|-------|
@@ -330,7 +330,7 @@ Set the environment variable for your chosen embedding provider. memsearch reads
 | Google Gemini | `GOOGLE_API_KEY` | Requires `memsearch[google]` |
 | Voyage AI | `VOYAGE_API_KEY` | Requires `memsearch[voyage]` |
 | Ollama | `OLLAMA_HOST` (optional) | Defaults to `http://localhost:11434` |
-| Local (sentence-transformers) | -- | No API key needed |
+| Local (sentence-transformers) | — | No API key needed |
 | Anthropic | `ANTHROPIC_API_KEY` | Used by `compact` summarization only |
 
 ```bash
@@ -358,7 +358,7 @@ graph TD
     style E fill:#2a3a5c,stroke:#e0976b,color:#a8b2c1
 ```
 
-### Milvus Lite (default -- zero config)
+### Milvus Lite (default — zero config)
 
 Data is stored in a single local `.db` file. No server to install, no ports to open.
 
@@ -443,10 +443,10 @@ Zero-ops, auto-scaling managed Milvus. Get a free cluster at [cloud.zilliz.com](
 
 memsearch uses a layered configuration system. Settings are resolved in priority order (lowest to highest):
 
-1. **Built-in defaults** -- sensible out-of-the-box values
-2. **Global config** -- `~/.memsearch/config.toml`
-3. **Project config** -- `.memsearch.toml` in your working directory
-4. **CLI flags** -- `--milvus-uri`, `--provider`, etc.
+1. **Built-in defaults** — sensible out-of-the-box values
+2. **Global config** — `~/.memsearch/config.toml`
+3. **Project config** — `.memsearch.toml` in your working directory
+4. **CLI flags** — `--milvus-uri`, `--provider`, etc.
 
 Higher-priority sources override lower ones. This means you can set defaults globally, customize per project, and override on the fly with CLI flags.
 
@@ -549,14 +549,14 @@ memsearch index ./memory/ --provider google --milvus-uri http://localhost:19530
 memsearch search "Redis config" --top-k 10 --milvus-uri http://10.0.0.5:19530
 ```
 
-For the full list of config keys, see [CLI Reference -- Available Config Keys](cli.md#available-config-keys).
+For the full list of config keys, see [CLI Reference — Available Config Keys](cli.md#available-config-keys).
 
 ---
 
 ## What's Next
 
-- **[Python API](python-api.md)** -- full reference for the `MemSearch` class with all parameters
-- **[CLI Reference](cli.md)** -- complete reference for all `memsearch` commands, flags, and config keys
-- **[Architecture](architecture.md)** -- deep dive into the chunking pipeline, dedup strategy, and data flow diagrams
-- **[Claude Code Plugin](claude-plugin/index.md)** -- give Claude automatic persistent memory across sessions with zero configuration
-- **[FAQ & Troubleshooting](faq.md)** -- common questions, platform support, error fixes
+- **[Python API](python-api.md)** — full reference for the `MemSearch` class with all parameters
+- **[CLI Reference](cli.md)** — complete reference for all `memsearch` commands, flags, and config keys
+- **[Architecture](architecture.md)** — deep dive into the chunking pipeline, dedup strategy, and data flow diagrams
+- **[Claude Code Plugin](claude-plugin/index.md)** — give Claude automatic persistent memory across sessions with zero configuration
+- **[FAQ & Troubleshooting](faq.md)** — common questions, platform support, error fixes

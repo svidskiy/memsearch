@@ -41,7 +41,7 @@ MemSearch(
 | `embedding_provider` | `str` | `"openai"` | Embedding backend (`"openai"`, `"google"`, `"voyage"`, `"ollama"`, `"local"`) |
 | `embedding_model` | `str \| None` | `None` | Override the default model for the chosen provider |
 | `embedding_batch_size` | `int` | `0` | Number of texts to embed per API call. `0` = use provider default |
-| `milvus_uri` | `str` | `"~/.memsearch/milvus.db"` | Milvus connection URI -- local `.db` path for Milvus Lite (Linux/macOS only), `http://host:port` for Milvus Server, or `https://*.zillizcloud.com` for Zilliz Cloud |
+| `milvus_uri` | `str` | `"~/.memsearch/milvus.db"` | Milvus connection URI — local `.db` path for Milvus Lite (Linux/macOS only), `http://host:port` for Milvus Server, or `https://*.zillizcloud.com` for Zilliz Cloud |
 | `milvus_token` | `str \| None` | `None` | Auth token for Milvus Server or Zilliz Cloud |
 | `collection` | `str` | `"memsearch_chunks"` | Milvus collection name. Use different names to isolate agents sharing the same backend |
 | `max_chunk_size` | `int` | `1500` | Maximum chunk size in characters |
@@ -132,7 +132,7 @@ Semantic search across indexed chunks. Uses [hybrid search](architecture.md#hybr
 | `source` | `str` | Path to the source markdown file |
 | `heading` | `str` | The heading this chunk belongs to |
 | `heading_level` | `int` | Heading level (1--6, or 0 for no heading) |
-| `chunk_hash` | `str` | Unique chunk identifier -- see [Architecture -- Deduplication](architecture.md#deduplication) |
+| `chunk_hash` | `str` | Unique chunk identifier — see [Architecture — Deduplication](architecture.md#deduplication) |
 | `start_line` | `int` | Start line in the source file |
 | `end_line` | `int` | End line in the source file |
 | `score` | `float` | Relevance score (higher is better) |

@@ -1,6 +1,6 @@
 # Progressive Disclosure
 
-Memory retrieval uses a **three-layer progressive disclosure model**, all handled autonomously by the **memory-recall skill** running in a forked subagent context. Claude invokes the skill when it judges the user's question needs historical context -- no manual intervention required.
+Memory retrieval uses a **three-layer progressive disclosure model**, all handled autonomously by the **memory-recall skill** running in a forked subagent context. Claude invokes the skill when it judges the user's question needs historical context — no manual intervention required.
 
 ```mermaid
 graph TD
@@ -29,7 +29,7 @@ When Claude detects that a user's question could benefit from past context, it a
 4. **Drills into transcripts** when needed with `memsearch transcript`
 5. **Returns a curated summary** to the main agent
 
-The main agent only sees the final summary -- all intermediate search results, raw expand output, and transcript parsing happen inside the subagent.
+The main agent only sees the final summary — all intermediate search results, raw expand output, and transcript parsing happen inside the subagent.
 
 Users can also manually invoke the skill with `/memory-recall <query>` if Claude doesn't trigger it automatically.
 
@@ -79,7 +79,7 @@ Transcript: /home/user/.claude/projects/.../abc123de...7890.jsonl
 - Wrote integration tests with fakeredis
 ```
 
-The subagent sees the full context including neighboring sections. The embedded `<!-- session:... -->` anchors link to the original conversation -- if the subagent needs to go even deeper, it moves to L3.
+The subagent sees the full context including neighboring sections. The embedded `<!-- session:... -->` anchors link to the original conversation — if the subagent needs to go even deeper, it moves to L3.
 
 Additional flags:
 
@@ -95,7 +95,7 @@ memsearch expand 47b5475122b992b6 --lines 10
 
 ## L3: Transcript Drill-Down
 
-When Claude needs the original conversation verbatim -- for instance, to recall exact code snippets, error messages, or tool outputs -- it drills into the JSONL transcript.
+When Claude needs the original conversation verbatim — for instance, to recall exact code snippets, error messages, or tool outputs — it drills into the JSONL transcript.
 
 **List all turns** in a session:
 
@@ -138,10 +138,10 @@ your current dependencies and middleware setup.
   [Read] requirements.txt
   [Read] src/middleware/__init__.py
   [Write] src/middleware/cache.py
-  [Edit] src/main.py -- added cache middleware to app
+  [Edit] src/main.py — added cache middleware to app
 ```
 
-This recovers the full original conversation -- user messages, assistant responses, and tool call summaries -- so Claude can recall exactly what happened during a past session.
+This recovers the full original conversation — user messages, assistant responses, and tool call summaries — so Claude can recall exactly what happened during a past session.
 
 ---
 

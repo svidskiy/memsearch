@@ -42,7 +42,7 @@ With update available:
 With missing API key:
 
 ```
-[memsearch v0.1.11] embedding: openai/text-embedding-3-small | milvus: ~/.memsearch/milvus.db | ERROR: OPENAI_API_KEY not set -- memory search disabled
+[memsearch v0.1.11] embedding: openai/text-embedding-3-small | milvus: ~/.memsearch/milvus.db | ERROR: OPENAI_API_KEY not set — memory search disabled
 ```
 
 ---
@@ -54,8 +54,8 @@ Fires on every user prompt before Claude processes it.
 **What it does:**
 
 1. **Extracts the prompt** from the hook input JSON.
-2. **Skips short prompts** (under 10 characters) -- greetings and single words don't need memory hints.
-3. **Returns a lightweight hint.** Outputs `systemMessage: "[memsearch] Memory available"` -- a visible one-liner that keeps Claude aware of the memory system without performing any search.
+2. **Skips short prompts** (under 10 characters) — greetings and single words don't need memory hints.
+3. **Returns a lightweight hint.** Outputs `systemMessage: "[memsearch] Memory available"` — a visible one-liner that keeps Claude aware of the memory system without performing any search.
 
 The actual memory retrieval is handled by the **[memory-recall skill](progressive-disclosure.md)**, which Claude invokes automatically when it judges the user's question needs historical context.
 
@@ -75,7 +75,7 @@ Fires after Claude finishes each response. Runs **asynchronously** so it does no
     - Scans backward from EOF to find the last real user message (content is a string, not a `tool_result`)
     - Extracts only the last turn: from that user message to EOF
     - Skips `progress`, `file-history-snapshot`, `system`, and `thinking` blocks
-    - Formats output with clear role labels: `[Human]` for user messages, `[Claude Code]` for assistant text, `[Claude Code calls tool]` for tool invocations, `[Tool output]`/`[Tool error]` for tool results -- these labels help the summarizer treat the content as a third-party transcript rather than its own conversation
+    - Formats output with clear role labels: `[Human]` for user messages, `[Claude Code]` for assistant text, `[Claude Code calls tool]` for tool invocations, `[Tool output]`/`[Tool error]` for tool results — these labels help the summarizer treat the content as a third-party transcript rather than its own conversation
     - Truncates tool results to 1000 characters; uses Python 3 (no `jq` dependency)
 
 4. **Summarizes with Haiku.** Pipes the parsed last turn to `claude -p --model haiku --no-session-persistence` with an external-observer system prompt that requests 2-6 third-person bullet points recording what the user asked and what Claude did (tools called, files changed, key findings). The summary language matches the user's language.

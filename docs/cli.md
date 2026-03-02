@@ -70,7 +70,7 @@ Manage memsearch configuration. Configuration is stored in TOML files and follow
 dataclass defaults -> ~/.memsearch/config.toml -> .memsearch.toml -> CLI flags
 ```
 
-Higher-priority sources override lower-priority ones. For a full walkthrough, see [Getting Started -- Configuration](getting-started.md#configuration).
+Higher-priority sources override lower-priority ones. For a full walkthrough, see [Getting Started — Configuration](getting-started.md#configuration).
 
 ### Subcommands
 
@@ -214,7 +214,7 @@ prompt_file = ""
 
 ## `memsearch index`
 
-Scan one or more directories (or files) and index all markdown files (`.md`, `.markdown`) into the Milvus vector store. Only new or changed chunks are embedded by default -- unchanged chunks are skipped. Chunks belonging to deleted files are automatically removed from the index.
+Scan one or more directories (or files) and index all markdown files (`.md`, `.markdown`) into the Milvus vector store. Only new or changed chunks are embedded by default — unchanged chunks are skipped. Chunks belonging to deleted files are automatically removed from the index.
 
 ### Options
 
@@ -403,7 +403,7 @@ $ memsearch compact --prompt-file ./prompts/compress.txt
 
 > Part of the [Claude Code plugin](claude-plugin/progressive-disclosure.md)'s three-level progressive disclosure workflow (`search` -> `expand` -> `transcript`), but works as a standalone CLI tool for any memsearch index.
 
-Look up a chunk by its hash in the index and return the surrounding context from the original source markdown file. This is "progressive disclosure level 2" -- when a search result snippet is not enough, expand it to see the full heading section.
+Look up a chunk by its hash in the index and return the surrounding context from the original source markdown file. This is "progressive disclosure level 2" — when a search result snippet is not enough, expand it to see the full heading section.
 
 ### Options
 
@@ -453,7 +453,7 @@ $ memsearch expand a1b2c3d4e5f6 --json-output
 
 > Part of the [Claude Code plugin](claude-plugin/progressive-disclosure.md)'s three-level progressive disclosure workflow (`search` -> `expand` -> `transcript`), but works as a standalone CLI tool for any JSONL transcript.
 
-Parse a JSONL transcript file (e.g., from Claude Code) and display conversation turns. This is "progressive disclosure level 3" -- drill all the way down from a memory chunk to the original conversation that generated it.
+Parse a JSONL transcript file (e.g., from Claude Code) and display conversation turns. This is "progressive disclosure level 3" — drill all the way down from a memory chunk to the original conversation that generated it.
 
 ### Options
 
@@ -543,14 +543,14 @@ $ memsearch reset --milvus-uri http://localhost:19530 --collection old_project -
 
 ### Notes
 
-- **This is destructive and irreversible.** All indexed data will be lost. Your original markdown files are not affected -- you can always re-index them with `memsearch index`.
+- **This is destructive and irreversible.** All indexed data will be lost. Your original markdown files are not affected — you can always re-index them with `memsearch index`.
 - **Only drops the collection, not the database.** If you are using Milvus Lite (a local `.db` file), the file itself remains; only the collection inside it is removed.
 
 ---
 
 ## Environment Variables
 
-memsearch reads API keys from environment variables. These are required by the corresponding embedding and LLM provider SDKs and are **not** stored in memsearch config files. For a full walkthrough, see [Getting Started -- API Keys](getting-started.md#api-keys).
+memsearch reads API keys from environment variables. These are required by the corresponding embedding and LLM provider SDKs and are **not** stored in memsearch config files. For a full walkthrough, see [Getting Started — API Keys](getting-started.md#api-keys).
 
 ### API Keys
 
