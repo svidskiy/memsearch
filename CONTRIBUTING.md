@@ -10,6 +10,7 @@ Questions or ideas? Join the [Discord](https://discord.com/invite/FG6hMJStWu).
 git clone https://github.com/zilliztech/memsearch.git
 cd memsearch
 uv sync --all-extras
+uv run pre-commit install
 ```
 
 > **Dependency management:** Use `uv` and `pyproject.toml` — never `pip install` directly.
@@ -35,6 +36,8 @@ uv run python -m pytest --cov=memsearch --cov-report=term-missing
 ## Code Style
 
 The project uses [Ruff](https://docs.astral.sh/ruff/) for linting and formatting. CI will fail if either check doesn't pass.
+
+Pre-commit hooks run ruff automatically on every commit. If you skipped `uv run pre-commit install` during setup, you can run checks manually:
 
 ```bash
 uv run ruff check src/ tests/      # lint
